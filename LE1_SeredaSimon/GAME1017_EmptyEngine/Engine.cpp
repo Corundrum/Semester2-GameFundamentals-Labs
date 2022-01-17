@@ -65,12 +65,12 @@ bool Engine::KeyDown(SDL_Scancode c)
 
 void Engine::Update()
 {
-	
+	//StateManager.Update()
 }
 
 void Engine::Render()
 {
-	
+	//StateManager.Render()
 }
 
 void Engine::Sleep()
