@@ -41,8 +41,8 @@ public:
 class GameState : public State
 {
 private:
-	//map for music track
-	//map for sfx
+	map<string, Mix_Music*> m_music;
+	map<string, Mix_Chunk*> m_sounds;
 public:
 	GameState();
 	virtual void Enter();
@@ -55,8 +55,6 @@ public:
 class EndState : public State
 {
 private:
-	//map for music track
-	//map for sfx
 public:
 	EndState();
 	virtual void Enter();

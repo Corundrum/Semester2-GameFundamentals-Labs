@@ -81,8 +81,10 @@ GameState::GameState(){}
 void GameState::Enter()
 {
 	cout << "entering GameState..." << endl;
-	//load sfx, add them to map.
-	//load music track, add it to map and play it.
+	m_music.emplace("MonkeysSpinning", Mix_LoadMUS("Monkeys-Spinning.mp3"));
+	m_sounds.emplace("Magic1", Mix_LoadWAV("Magic1.wav"));
+	m_sounds.emplace("Magic2", Mix_LoadWAV("Magic2.wav"));
+	Mix_PlayMusic(m_music["MonkeysSpinning"], -1);
 }
 
 void GameState::Update()
@@ -90,7 +92,7 @@ void GameState::Update()
 	if (Engine::Instance().KeyDown(SDL_SCANCODE_P))
 	{
 		cout << "Changing to PauseState" << endl;
-		//pause music
+		Mix_PauseMusic();
 		STMA::PushState(new PauseState());
 	}
 	if (Engine::Instance().KeyDown(SDL_SCANCODE_X))
@@ -101,12 +103,12 @@ void GameState::Update()
 	if (Engine::Instance().KeyDown(SDL_SCANCODE_1))
 	{
 		cout << "playing Magic1" << endl;
-		
+		Mix_PlayChannel(-1, m_sounds["Magic1"], 0);
 	}
 	if (Engine::Instance().KeyDown(SDL_SCANCODE_2))
 	{
 		cout << "playing Magic2" << endl;
-		
+		Mix_PlayChannel(-1, m_sounds["Magic2"], 0);
 	}
 
 }
@@ -124,13 +126,15 @@ void GameState::Render()
 void GameState::Exit()
 {
 	cout << "Exiting GameState..." << endl;
-	//call Mix_FreeMusic on music track
+	Mix_FreeMusic(m_music["MonkeysSpinning"]);
+	Mix_FreeChunk(m_sounds["Magic1"]);
+	Mix_FreeChunk(m_sounds["Magic2"]);
 }
 
 void GameState::Resume()
 {
 	cout << "Resuming GameState..." << endl;
-	//resume music track
+	Mix_ResumeMusic();
 }
 ////////////////////////////
 
