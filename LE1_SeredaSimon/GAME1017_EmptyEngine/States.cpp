@@ -91,7 +91,11 @@ void GameState::Update()
 		//pause music
 		STMA::PushState(new PauseState());
 	}
-	//parse 'x' key and changeState to new EndState
+	if (Engine::Instance().KeyDown(SDL_SCANCODE_X))
+	{
+		cout << "Changing to EndState" << endl;
+		STMA::ChangeState(new EndState() );
+	}
 	//parse 1 key and play first sfx
 	//parse 2 key and play second sfx
 }
@@ -123,20 +127,29 @@ EndState::EndState(){}
 
 void EndState::Enter()
 {
-
+	cout << "entering EndState..." << endl;
 }
 
 void EndState::Update()
 {
-
+	if (Engine::Instance().KeyDown(SDL_SCANCODE_R))
+	{
+		cout << "Changing to PauseState" << endl;
+		STMA::ChangeState(new TitleState());
+	}
 }
 
 void EndState::Render()
 {
-
+	SDL_SetRenderDrawColor(Engine::Instance().GetRenderer(), 255, 0, 0, 255);
+	SDL_RenderClear(Engine::Instance().GetRenderer());
+	if (dynamic_cast<EndState*>(STMA::GetStates().back()))
+	{
+		State::Render();
+	}
 }
 
 void EndState::Exit()
 {
-
+	cout << "Exiting GameState..." << endl;
 }
