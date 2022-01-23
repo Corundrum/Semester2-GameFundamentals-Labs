@@ -16,12 +16,51 @@ public:
 
 class TitleState : public State
 {
-	
+private:
+	//map for music track
+public:
+	TitleState();
+	virtual void Enter();
+	virtual void Update();
+	virtual void Render();
+	virtual void Exit();
+};
+
+class PauseState : public State
+{
+public:
+	PauseState();
+	virtual void Enter();
+	virtual void Update();
+	virtual void Render();
+	virtual void Exit();
 };
 
 class GameState : public State
 {
+private:
+	//map for music track
+	//map for sfx
+public:
+	GameState();
+	virtual void Enter();
+	virtual void Update();
+	virtual void Render();
+	virtual void Exit();
+	virtual void Resume();
+};
 
+class EndState : public State
+{
+private:
+	//map for music track
+	//map for sfx
+public:
+	EndState();
+	virtual void Enter();
+	virtual void Update();
+	virtual void Render();
+	virtual void Exit();
 };
 
 #endif

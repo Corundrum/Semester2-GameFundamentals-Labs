@@ -21,6 +21,7 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 					// Do something here.
 				}
 				else return false; // Image init failed.
+				//initialize mixer subsystem
 			}
 			else return false; // Renderer creation failed.
 		}
@@ -29,6 +30,7 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 	else return false; // initalization failed.
 	m_fps = (Uint32)round(1.0 / (double)FPS * 1000); // Converts FPS into milliseconds, e.g. 16.67
 	m_keystates = SDL_GetKeyboardState(nullptr);
+	STMA::ChangeState(new TitleState() );
 	cout << "Initialization successful!" << endl;
 	m_running = true;
 	return true;
@@ -65,12 +67,12 @@ bool Engine::KeyDown(SDL_Scancode c)
 
 void Engine::Update()
 {
-	//StateManager.Update()
+	STMA::Update();
 }
 
 void Engine::Render()
 {
-	//StateManager.Render()
+	STMA::Render();
 }
 
 void Engine::Sleep()
@@ -89,7 +91,7 @@ int Engine::Run()
 		return 1;
 	}
 	// Start and run the "engine"
-	if (Init("GAME1007 M1", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, NULL) == false)
+	if (Init("GAME1017_LE1", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, NULL) == false)
 	{
 		return 2;
 	}
@@ -116,8 +118,11 @@ Engine& Engine::Instance()
 void Engine::Clean()
 {
 	cout << "Cleaning engine..." << endl;
+	STMA::Quit();
 	SDL_DestroyRenderer(m_pRenderer);
 	SDL_DestroyWindow(m_pWindow);
+	//Mix_CloseAudio();
+	//Mix_Quit();
 	IMG_Quit();
 	SDL_Quit();
 }

@@ -1,14 +1,1 @@
-﻿  Engine.cpp
-E:\Visual Studio Files\GAME1017_Exercises\LE1_SeredaSimon\GAME1017_EmptyEngine\States.h(12,1): error C2059: syntax error: '}'
-E:\Visual Studio Files\GAME1017_Exercises\LE1_SeredaSimon\GAME1017_EmptyEngine\States.h(12,1): error C2143: syntax error: missing ';' before '}'
-E:\Visual Studio Files\GAME1017_Exercises\LE1_SeredaSimon\GAME1017_EmptyEngine\States.h(12,1): error C2238: unexpected token(s) preceding ';'
-  Main.cpp
-  StateManager.cpp
-E:\Visual Studio Files\GAME1017_Exercises\LE1_SeredaSimon\GAME1017_EmptyEngine\States.h(12,1): error C2059: syntax error: '}'
-E:\Visual Studio Files\GAME1017_Exercises\LE1_SeredaSimon\GAME1017_EmptyEngine\States.h(12,1): error C2143: syntax error: missing ';' before '}'
-E:\Visual Studio Files\GAME1017_Exercises\LE1_SeredaSimon\GAME1017_EmptyEngine\States.h(12,1): error C2238: unexpected token(s) preceding ';'
-  States.cpp
-E:\Visual Studio Files\GAME1017_Exercises\LE1_SeredaSimon\GAME1017_EmptyEngine\States.h(12,1): error C2059: syntax error: '}'
-E:\Visual Studio Files\GAME1017_Exercises\LE1_SeredaSimon\GAME1017_EmptyEngine\States.h(12,1): error C2143: syntax error: missing ';' before '}'
-E:\Visual Studio Files\GAME1017_Exercises\LE1_SeredaSimon\GAME1017_EmptyEngine\States.h(12,1): error C2238: unexpected token(s) preceding ';'
-  Generating Code...
+﻿  GAME1017_EmptyEngine.vcxproj -> E:\Visual Studio Files\Game Fundamentals\LE1_SeredaSimon\Debug\GAME1017_EmptyEngine.exe

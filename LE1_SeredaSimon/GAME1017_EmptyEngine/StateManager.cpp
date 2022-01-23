@@ -12,13 +12,13 @@ void StateManager::Render()
 		s_states.back()->Render();
 }
 
-void StateManager::PushState(State* pState)
+void StateManager::PushState(State* pState) //game to pause
 {
 	s_states.push_back(pState);
 	s_states.back()->Enter();
 }
 
-void StateManager::PopState()
+void StateManager::PopState() //pause to game
 {
 	if (s_states.size() <= 1) return;
 	if (!s_states.empty())
@@ -56,3 +56,5 @@ void StateManager::Quit()
 }
 
 std::vector<State*>& StateManager::GetStates() { return s_states; }
+
+std::vector<State*> StateManager::s_states;
