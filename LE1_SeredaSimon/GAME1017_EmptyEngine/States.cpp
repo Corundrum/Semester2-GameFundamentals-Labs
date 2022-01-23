@@ -15,7 +15,8 @@ TitleState::TitleState(){}
 void TitleState::Enter()
 {
 	cout << "entering TitleState..." << endl;
-	//load music track, add it to map and play it.
+	m_music.emplace("FluffingADuck", Mix_LoadMUS("Fluffing-a-Duck.mp3"));
+	Mix_PlayMusic(m_music["FluffingADuck"], -1);
 }
 
 void TitleState::Update()
@@ -37,6 +38,7 @@ void TitleState::Render()
 void TitleState::Exit()
 {
 	cout << "Exiting TitleState..." << endl;
+	Mix_FreeMusic(m_music["FluffingADuck"]);
 	//call Mix_FreeMusic on music track
 }
 ////////////////////////////
@@ -96,8 +98,17 @@ void GameState::Update()
 		cout << "Changing to EndState" << endl;
 		STMA::ChangeState(new EndState() );
 	}
-	//parse 1 key and play first sfx
-	//parse 2 key and play second sfx
+	if (Engine::Instance().KeyDown(SDL_SCANCODE_1))
+	{
+		cout << "playing Magic1" << endl;
+		
+	}
+	if (Engine::Instance().KeyDown(SDL_SCANCODE_2))
+	{
+		cout << "playing Magic2" << endl;
+		
+	}
+
 }
 
 void GameState::Render()

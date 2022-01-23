@@ -21,7 +21,13 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 					// Do something here.
 				}
 				else return false; // Image init failed.
-				//initialize mixer subsystem
+				if (Mix_Init(MIX_INIT_MP3) != 0)
+				{
+					Mix_OpenAudio(44100, AUDIO_S16SYS, 2, 4096);
+					Mix_AllocateChannels(16);
+
+				}
+				else return false;
 			}
 			else return false; // Renderer creation failed.
 		}
@@ -30,7 +36,12 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 	else return false; // initalization failed.
 	m_fps = (Uint32)round(1.0 / (double)FPS * 1000); // Converts FPS into milliseconds, e.g. 16.67
 	m_keystates = SDL_GetKeyboardState(nullptr);
+
+	Mix_VolumeMusic(16);
+	Mix_Volume(-1, 32);
+
 	STMA::ChangeState(new TitleState() );
+
 	cout << "Initialization successful!" << endl;
 	m_running = true;
 	return true;
@@ -121,8 +132,8 @@ void Engine::Clean()
 	STMA::Quit();
 	SDL_DestroyRenderer(m_pRenderer);
 	SDL_DestroyWindow(m_pWindow);
-	//Mix_CloseAudio();
-	//Mix_Quit();
+	
+	Mix_Quit();
 	IMG_Quit();
 	SDL_Quit();
 }

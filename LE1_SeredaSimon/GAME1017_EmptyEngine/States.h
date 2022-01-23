@@ -2,6 +2,8 @@
 #ifndef _STATES_H_
 #define _STATES_H_
 
+#include "Engine.h"
+
 class State
 {
 protected:
@@ -17,7 +19,7 @@ public:
 class TitleState : public State
 {
 private:
-	//map for music track
+	map<string, Mix_Music*> m_music;
 public:
 	TitleState();
 	virtual void Enter();

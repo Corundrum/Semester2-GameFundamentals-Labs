@@ -39,4 +39,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="Fluffing-a-Duck.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Magic1.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Magic2.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Monkeys-Spinning.mp3">
+      <Filter>Resource Files</Filter>
+    </Media>
+  </ItemGroup>
 </Project>
