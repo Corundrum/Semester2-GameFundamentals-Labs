@@ -117,19 +117,34 @@ void GameState::Update()
 	for (unsigned i = 0; i < s_bullets.size(); i++)
 		s_bullets[i]->Update();
 
-	// Cleanup bullets and enemies that go off screen.
+	cout << s_bullets.size() << endl;
 
-		// for all bullets
-			// if bullet goes off screen (four bounds checks)
-				// delete s_bullets[i]
-				// set s_bullets[i] to nullptr
-	
-		// for all enemies, similar to above
+	// Cleanup bullets and enemies that go off screen.
+	//enemies
+	for (unsigned i = 0; i < s_enemies.size(); i++)
+	{
+		if (s_enemies[i]->GetPos().y > HEIGHT)
+		{
+			delete s_enemies[i];
+			s_enemies[i] = nullptr;
+			s_enemies.erase(s_enemies.begin() + i);
+			s_enemies.shrink_to_fit();
+			break;
+		}
+	}
+	//bullets
+	for (unsigned i = 0; i < s_bullets.size(); i++)
+	{
+		if (s_bullets[i]->getDst().x < 0 || s_bullets[i]->getDst().x > WIDTH || s_bullets[i]->getDst().y < 0 || s_bullets[i]->getDst().y > HEIGHT)
+		{
+			delete s_bullets[i];
+			s_bullets[i] = nullptr;
+			s_bullets.erase(s_bullets.begin() + i);
+			s_bullets.shrink_to_fit();
+		}
+	}
 
 	// Check for collisions with bullets and enemies.
-	
-	
-
 	for (unsigned i = 0; i < s_bullets.size(); i++)
 	{
 		for (unsigned j = 0; j < s_enemies.size(); j++)

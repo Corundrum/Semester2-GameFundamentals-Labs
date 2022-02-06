@@ -1,14 +1,2 @@
-﻿  Bullet.cpp
-E:\Visual Studio Files\Game Fundamentals\LE2_SeredaSimon\GAME1017_EmptyEngine\Bullet.cpp(8,13): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-E:\Visual Studio Files\Game Fundamentals\LE2_SeredaSimon\GAME1017_EmptyEngine\Bullet.cpp(9,13): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-  Enemy.cpp
-  Engine.cpp
-  StateManager.cpp
-  States.cpp
-  Turret.cpp
-E:\Visual Studio Files\Game Fundamentals\LE2_SeredaSimon\GAME1017_EmptyEngine\Turret.cpp(38,37): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-E:\Visual Studio Files\Game Fundamentals\LE2_SeredaSimon\GAME1017_EmptyEngine\Turret.cpp(38,37): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-E:\Visual Studio Files\Game Fundamentals\LE2_SeredaSimon\GAME1017_EmptyEngine\Turret.cpp(38,64): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-E:\Visual Studio Files\Game Fundamentals\LE2_SeredaSimon\GAME1017_EmptyEngine\Turret.cpp(38,64): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  Generating Code...
+﻿  States.cpp
   GAME1017_EmptyEngine.vcxproj -> E:\Visual Studio Files\Game Fundamentals\LE2_SeredaSimon\Debug\GAME1017_EmptyEngine.exe
