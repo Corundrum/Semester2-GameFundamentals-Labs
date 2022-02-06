@@ -115,10 +115,10 @@ void GameState::Update()
 
 void GameState::Render()
 {
-	SDL_SetRenderDrawColor(Engine::Instance().GetRenderer(), 0, 255, 0, 255);
-	SDL_RenderClear(Engine::Instance().GetRenderer());
 	if (dynamic_cast<GameState*>(STMA::GetStates().back()))
 	{
+		SDL_SetRenderDrawColor(Engine::Instance().GetRenderer(), 0, 255, 0, 255);
+		SDL_RenderClear(Engine::Instance().GetRenderer());
 		State::Render();
 	}
 }
