@@ -5,7 +5,8 @@
 #include "TextureManager.h"
 #include "CollisionManager.h"
 #include "Engine.h"
-// Include tinyxml2.h
+#include "tinyxml2.h"
+
 using namespace std;
 
 void State::Render()
@@ -82,6 +83,24 @@ void GameState::ClearTurrets()
 	m_turrets.shrink_to_fit();
 }
 
+void GameState::SaveState()
+{
+	tinyxml2::XMLDocument xmlDoc;
+	xmlDoc.DeleteChildren();
+	tinyxml2::XMLNode* pRoot = xmlDoc.NewElement("Root");
+	xmlDoc.InsertEndChild(pRoot);
+
+	vector<int> turretList;
+	for (unsigned i = 0; i < m_turrets.size(); i++)
+	{
+		tinyxml2::XMLElement* pElement = xmlDoc.NewElement("Turret");
+		pElement->SetAttribute("x", m_turrets[i]->GetPos().x);
+		pElement->SetAttribute("y", m_turrets[i]->GetPos().y);
+		pRoot->InsertEndChild(pElement);
+	}
+	xmlDoc.SaveFile("TurretSavedData.xml");
+}
+
 GameState::GameState():m_spawnCtr(0) {}
 
 void GameState::Enter()
@@ -90,6 +109,7 @@ void GameState::Enter()
 	TEMA::Load("Img/Enemies.png", "enemy");
 	s_enemies.push_back(new Enemy({512, -200, 40, 57}));
 	// Create the DOM and load the XML file.
+
 	// Iterate through the Turret elements in the file and push_back new Turrets into the m_turrets vector.
 		// Look at the last two examples from Week 3
 }
@@ -195,6 +215,8 @@ void GameState::Render()
 
 void GameState::Exit()
 {
+	SaveState();
+
 	// You can clear all children of the root node by calling .DeleteChildren(); and this will essentially clear the DOM.
 	// Iterate through all the turrets and save their positions as child elements of the root node in the DOM.
 	// Make sure to save to the XML file.

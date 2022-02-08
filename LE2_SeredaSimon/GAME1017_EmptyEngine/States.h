@@ -48,6 +48,7 @@ private:
 	static std::vector<Bullet*> s_bullets;
 	int m_spawnCtr;
 	void ClearTurrets();
+	void SaveState();
 public: // Public methods.
 	GameState();
 	virtual void Enter();
