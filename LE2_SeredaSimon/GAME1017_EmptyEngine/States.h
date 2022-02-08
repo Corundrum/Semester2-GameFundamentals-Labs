@@ -49,6 +49,7 @@ private:
 	int m_spawnCtr;
 	void ClearTurrets();
 	void SaveState();
+	void loadState();
 public: // Public methods.
 	GameState();
 	virtual void Enter();
