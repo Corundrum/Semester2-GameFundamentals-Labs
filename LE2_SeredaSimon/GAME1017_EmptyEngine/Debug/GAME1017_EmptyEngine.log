@@ -1,2 +1,16 @@
 ﻿  States.cpp
-  GAME1017_EmptyEngine.vcxproj -> E:\Visual Studio Files\Game Fundamentals\LE2_SeredaSimon\Debug\GAME1017_EmptyEngine.exe
+  Turret.cpp
+E:\Visual Studio Files\Game Fundamentals\LE2_SeredaSimon\GAME1017_EmptyEngine\Turret.cpp(37,79): error C2065: 'cPos': undeclared identifier
+E:\Visual Studio Files\Game Fundamentals\LE2_SeredaSimon\GAME1017_EmptyEngine\Turret.cpp(37,95): error C2065: 'cPos': undeclared identifier
+E:\Visual Studio Files\Game Fundamentals\LE2_SeredaSimon\GAME1017_EmptyEngine\Turret.cpp(37,6): error C2665: 'MathManager::Distance': none of the 2 overloads could convert all the argument types
+E:\Visual Studio Files\Game Fundamentals\LE2_SeredaSimon\GAME1017_EmptyEngine\MathManager.h(13,16): message : could be 'double MathManager::Distance(const SDL_FRect *,const SDL_FRect *)'
+E:\Visual Studio Files\Game Fundamentals\LE2_SeredaSimon\GAME1017_EmptyEngine\Turret.cpp(37,6): message : while trying to match the argument list '(int, int)'
+E:\Visual Studio Files\Game Fundamentals\LE2_SeredaSimon\GAME1017_EmptyEngine\Turret.cpp(38,4): error C2065: 'cPos': undeclared identifier
+E:\Visual Studio Files\Game Fundamentals\LE2_SeredaSimon\GAME1017_EmptyEngine\Turret.cpp(40,29): error C2065: 'cPos': undeclared identifier
+E:\Visual Studio Files\Game Fundamentals\LE2_SeredaSimon\GAME1017_EmptyEngine\Turret.cpp(40,45): error C2065: 'cPos': undeclared identifier
+E:\Visual Studio Files\Game Fundamentals\LE2_SeredaSimon\GAME1017_EmptyEngine\Turret.cpp(40,5): error C2665: 'MathManager::Distance': none of the 2 overloads could convert all the argument types
+E:\Visual Studio Files\Game Fundamentals\LE2_SeredaSimon\GAME1017_EmptyEngine\MathManager.h(13,16): message : could be 'double MathManager::Distance(const SDL_FRect *,const SDL_FRect *)'
+E:\Visual Studio Files\Game Fundamentals\LE2_SeredaSimon\GAME1017_EmptyEngine\Turret.cpp(40,5): message : while trying to match the argument list '(int, int)'
+E:\Visual Studio Files\Game Fundamentals\LE2_SeredaSimon\GAME1017_EmptyEngine\Turret.cpp(42,30): error C2065: 'cPos': undeclared identifier
+E:\Visual Studio Files\Game Fundamentals\LE2_SeredaSimon\GAME1017_EmptyEngine\Turret.cpp(42,48): error C2065: 'cPos': undeclared identifier
+  Generating Code...

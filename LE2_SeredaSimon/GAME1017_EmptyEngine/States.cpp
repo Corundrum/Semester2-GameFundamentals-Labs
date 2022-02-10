@@ -85,14 +85,14 @@ void GameState::ClearTurrets()
 
 void GameState::SaveState()
 {
-	tinyxml2::XMLDocument xmlDoc;
+	//tinyxml2::XMLDocument xmlDoc;
 	xmlDoc.DeleteChildren();
-	tinyxml2::XMLNode* pRoot = xmlDoc.NewElement("Root");
+	pRoot = xmlDoc.NewElement("Root");
 	xmlDoc.InsertEndChild(pRoot);
 
 	for (unsigned i = 0; i < m_turrets.size(); i++)
 	{
-		tinyxml2::XMLElement* pElement = xmlDoc.NewElement("Turret");
+		pElement = xmlDoc.NewElement("Turret");
 		pElement->SetAttribute("x", m_turrets[i]->m_dst.x);
 		pElement->SetAttribute("y", m_turrets[i]->m_dst.y);
 		pRoot->InsertEndChild(pElement);
@@ -102,10 +102,10 @@ void GameState::SaveState()
 
 void GameState::loadState()
 {
-	tinyxml2::XMLDocument xmlDoc;
+	//tinyxml2::XMLDocument xmlDoc;
 	xmlDoc.LoadFile("TurretSavedData.xml");
-	tinyxml2::XMLNode* pRoot = xmlDoc.FirstChildElement("Root");
-	tinyxml2::XMLElement* pElement = pRoot->FirstChildElement("Turret");
+	pRoot = xmlDoc.FirstChildElement("Root");
+	pElement = pRoot->FirstChildElement("Turret");
 	while (pElement != nullptr)
 	{
 		int x, y;

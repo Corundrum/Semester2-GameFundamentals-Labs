@@ -3,6 +3,7 @@
 #define _STATES_H_
 #include "Turret.h"
 #include "Enemy.h"
+#include "tinyxml2.h"
 #include <vector>
 
 // An abstract class is one that cannot be instantiated. 
@@ -43,6 +44,9 @@ public: // Public methods.
 class GameState : public State
 {
 private:
+	tinyxml2::XMLDocument xmlDoc;
+	tinyxml2::XMLNode* pRoot;
+	tinyxml2::XMLElement* pElement;
 	std::vector<Turret*> m_turrets;
 	static std::vector<Enemy*> s_enemies;
 	static std::vector<Bullet*> s_bullets;
