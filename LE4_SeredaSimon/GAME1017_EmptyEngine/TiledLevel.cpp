@@ -1,6 +1,7 @@
 #include "TiledLevel.h"
 
-TiledLevel::TiledLevel(const unsigned short r, const unsigned short c, const int w, const int h, const char* tileData, const char* levelData, const char* tileKey) : m_rows(r), m_cols(c), m_tileKey(tileKey)
+TiledLevel::TiledLevel(const unsigned short r, const unsigned short c, const int w, const int h, 
+	const char* tileData, const char* levelData, const char* tileKey) : m_rows(r), m_cols(c), m_tileKey(tileKey)
 {
 	ifstream inFile(tileData); // create the 16 prototype tiles
 	if (inFile.is_open())
