@@ -103,7 +103,10 @@ void GameState::SaveState()
 void GameState::loadState()
 {
 	//tinyxml2::XMLDocument xmlDoc;
-	xmlDoc.LoadFile("TurretSavedData.xml");
+	if (xmlDoc.LoadFile("TurretSavedData.xml"))
+	{
+		xmlDoc.LoadFile("TurretSavedData.xml");
+	}
 	pRoot = xmlDoc.FirstChildElement("Root");
 	pElement = pRoot->FirstChildElement("Turret");
 	while (pElement != nullptr)
