@@ -108,12 +108,11 @@ void GameState::Enter() // Used for initialization.
 	SOMA::Load("Aud/Explode.wav", "explode", SOUND_SFX);
 	SOMA::Load("Aud/Wings.mp3", "wings", SOUND_MUSIC);
 	//SOMA::Load("Aud/Danger.mp3", "danger", SOUND_MUSIC); // Alternate music track.
-	m_objects.push_back(pair<string, GameObject*>("bg",
-		new Image({ 0, 0, 1024, 768 }, { 0, 0, 1024, 768 }, "bg")));
-	m_objects.push_back(pair<string, GameObject*>("astf",
-		new AsteroidField(24)));
-	m_objects.push_back(pair<string, GameObject*>("ship",
-		new ShipAsteroids({ 0, 0, 100, 100 }, { 462.0f, 334.0f, 100.0f, 100.0f })));
+
+	m_objects.push_back(pair<string, GameObject*>("bg", new Image({ 0, 0, 1024, 768 }, { 0, 0, 1024, 768 }, "bg")));
+	m_objects.push_back(pair<string, GameObject*>("astf", new AsteroidField(24)));
+	m_objects.push_back(pair<string, GameObject*>("ship", new ShipAsteroids({ 0, 0, 100, 100 }, { 462.0f, 334.0f, 100.0f, 100.0f })));
+
 	SOMA::SetSoundVolume(16);
 	SOMA::SetMusicVolume(32);
 	SOMA::PlayMusic("wings", -1, 2000);
@@ -166,15 +165,51 @@ void GameState::Update()
 				{
 					SOMA::PlaySound("explode");
 					// New asteroid chunk spawn code. Hints:
-
+		
 					// You would only need to spawn two chunks if the asteroid that is hit is full size or one smaller than full.
 					// As yourself why the bullet and asteroid that are colliding are only getting destroyed AFTER the two chunks spawn.
 					// What data can you get from the bullet and asteroid that the chunks need?
+					
+					if (field->at(j)->GetRadius() == 33)
+					{
+						for (unsigned k = 0; k < 2; k++)
+						{
+							if (k == 0)
+							{
+								field->push_back(new Asteroid({ 539, 0, 61, 66 }, { field->at(j)->GetCenter().x, field->at(j)->GetCenter().y, 66 * 0.66f,
+									field->at(j)->GetDst()->h * 0.66f }, bullets->at(i)->GetAngle() + (rand() % 15 + 30)));
+							}
+							else
+							{
+								field->push_back(new Asteroid({ 539, 0, 61, 66 }, { field->at(j)->GetCenter().x, field->at(j)->GetCenter().y, 66 * 0.66f,
+									field->at(j)->GetDst()->h * 0.66f }, bullets->at(i)->GetAngle() - (rand() % 15 + 30)));
+							}
+							field->back()->SetColMods(field->at(j)->GetR(), field->at(j)->GetG(), field->at(j)->GetB());
+						}
+					}
+					if (field->at(j)->GetRadius() == 33 * 0.66f)
+					{
+						for (unsigned k = 0; k < 2; k++)
+						{
+							if (k == 0)
+							{
+								field->push_back(new Asteroid({ 539, 0, 61, 66 }, { field->at(j)->GetCenter().x, field->at(j)->GetCenter().y, 66 * 0.33f,
+									field->at(j)->GetDst()->h * 0.66f }, bullets->at(i)->GetAngle() + (rand() % 15 + 30)));
+							}
+							else
+							{
+								field->push_back(new Asteroid({ 539, 0, 61, 66 }, { field->at(j)->GetCenter().x, field->at(j)->GetCenter().y, 66 * 0.33f,
+									field->at(j)->GetDst()->h * 0.66f }, bullets->at(i)->GetAngle() - (rand() % 15 + 30)));
+							}
+							field->back()->SetColMods(field->at(j)->GetR(), field->at(j)->GetG(), field->at(j)->GetB());
+						}
+					}
 
 					// End new chunk spawn code.
 					delete bul;
 					bullets->erase(bullets->begin() + i);
 					bullets->shrink_to_fit();
+					
 					delete ast;
 					field->erase(field->begin() + j);
 					field->shrink_to_fit();

@@ -10,8 +10,12 @@ class Asteroid : public SpriteObject
 {
 public:
 	Asteroid(SDL_Rect s, SDL_FRect d);
+	Asteroid(SDL_Rect s, SDL_FRect d, double a);
 	void Update();
 	void Render();
+	Uint8 GetR() { return m_rMod; }
+	Uint8 GetG() { return m_gMod; }
+	Uint8 GetB() { return m_bMod; }
 	const SDL_FPoint& GetCenter() { return m_center; }
 	const double& GetRadius() { return m_radius; }
 	void SetColMods(Uint8 r, Uint8 g, Uint8 b);
@@ -44,6 +48,7 @@ public:
 	Bullet(SDL_Rect s, SDL_FRect d, const char* key, const double angle);
 	void Update();
 	void Render();
+	double GetAngle() { return m_angle; }
 	const SDL_FPoint& GetCenter() { return m_center; }
 	const double& GetRadius() { return m_radius; }
 private:
@@ -63,7 +68,7 @@ public: // Methods.
 	void Update();
 	void Render();
 	const SDL_FPoint& GetCenter() { return m_center; }
-	const double& GetRadius() { /*return m_radius;*/ }
+	const double& GetRadius() { return m_radius; }
 	vector<Bullet*>& GetBullets() { return m_bullets; }
 private: // Properties.
 	SDL_FPoint m_center;

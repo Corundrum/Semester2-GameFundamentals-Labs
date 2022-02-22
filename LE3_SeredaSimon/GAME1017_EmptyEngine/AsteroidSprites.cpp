@@ -5,11 +5,19 @@
 #include "MathManager.h"
 
 Asteroid::Asteroid(SDL_Rect s, SDL_FRect d) : SpriteObject(s, d),
-m_angle(0.0), m_radius(33.0)
+m_angle(0.0), m_radius(m_dst.h/2)
 {
 	m_center = { (m_dst.x + m_dst.w / 2.0f), (m_dst.y + m_dst.h / 2.0f) };
 	m_rotSpeed = (1.0 + rand() % 5) * (rand() % 2 * 2.0 - 1.0); // -1 or 1
 	MAMA::SetDeltas(MAMA::Deg2Rad((rand() % 360) - 90.0), m_dx, m_dy, 2.0f, 2.0f);
+}
+
+Asteroid::Asteroid(SDL_Rect s, SDL_FRect d, double a) : SpriteObject(s, d),
+m_angle(0.0), m_radius(m_dst.h / 2)
+{
+	m_center = { (m_dst.x + m_dst.w / 2.0f), (m_dst.y + m_dst.h / 2.0f) };
+	m_rotSpeed = (1.0 + rand() % 5) * (rand() % 2 * 2.0 - 1.0); // -1 or 1
+	MAMA::SetDeltas(MAMA::Deg2Rad((int(a) % 360) - 90.0), m_dx, m_dy, 2.0f, 2.0f);
 }
 
 void Asteroid::Update()
