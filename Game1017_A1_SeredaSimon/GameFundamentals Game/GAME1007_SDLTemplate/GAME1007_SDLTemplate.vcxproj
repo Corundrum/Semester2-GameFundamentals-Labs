@@ -159,10 +159,13 @@
   <ItemGroup>
     <Image Include="bat.png" />
     <Image Include="Fireball.png" />
+    <Image Include="LoseTitle.png" />
     <Image Include="MainMenuButton.png" />
     <Image Include="ResumeButton.png" />
     <Image Include="sky_clouds.jpg" />
     <Image Include="StartGameButton.png" />
+    <Image Include="TitleName.png" />
+    <Image Include="WinTitle.png" />
     <Image Include="witch.png" />
   </ItemGroup>
   <ItemGroup>

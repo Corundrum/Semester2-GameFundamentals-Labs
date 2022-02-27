@@ -79,6 +79,15 @@
     <Image Include="StartGameButton.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="LoseTitle.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="TitleName.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="WinTitle.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="audio\batfire.wav">

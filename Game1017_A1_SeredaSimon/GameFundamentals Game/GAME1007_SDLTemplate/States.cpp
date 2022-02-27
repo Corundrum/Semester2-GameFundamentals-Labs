@@ -18,7 +18,8 @@ MenuState::MenuState() {}
 void MenuState::Enter()
 {
 	std::cout << "entering Start State..." << std::endl;
-	m_pStartButton = IMG_LoadTexture(Engine::Instance().GetRenderer(), "StartGameButton.png");
+	m_StartButton = IMG_LoadTexture(Engine::Instance().GetRenderer(), "StartGameButton.png");
+	m_TitleName = IMG_LoadTexture(Engine::Instance().GetRenderer(), "TitleName.png");
 
 }
 
@@ -34,7 +35,8 @@ void MenuState::Update()
 void MenuState::Render()
 {
 
-	SDL_RenderCopy(Engine::Instance().GetRenderer(), m_pStartButton, &m_StartButtonSrc, &m_StartButtonDst);
+	SDL_RenderCopy(Engine::Instance().GetRenderer(), m_StartButton, &m_StartButtonSrc, &m_StartButtonDst);
+	SDL_RenderCopy(Engine::Instance().GetRenderer(), m_TitleName, &m_TitleNameSrc, &m_TitleNameDst);
 	State::Render();
 }
 
@@ -52,6 +54,7 @@ void LoseState::Enter()
 {
 	std::cout << "entering Lose State..." << std::endl;
 	m_pMainMenuButton = IMG_LoadTexture(Engine::Instance().GetRenderer(), "MainMenuButton.png");
+	m_LoseTitle = IMG_LoadTexture(Engine::Instance().GetRenderer(), "LoseTitle.png");
 }
 
 void LoseState::Update()
@@ -66,7 +69,9 @@ void LoseState::Update()
 
 void LoseState::Render()
 {
+
 	SDL_RenderCopy(Engine::Instance().GetRenderer(), m_pMainMenuButton, &m_pMainMenuButtonSrc, &m_pMainMenuButtonDst);
+	SDL_RenderCopy(Engine::Instance().GetRenderer(), m_LoseTitle, &m_LoseTitleSrc, &m_LoseTitleDst);
 	State::Render();
 }
 
@@ -84,6 +89,7 @@ void WinState::Enter()
 {
 	std::cout << "entering Win State..." << std::endl;
 	m_pMainMenuButton = IMG_LoadTexture(Engine::Instance().GetRenderer(), "MainMenuButton.png");
+	m_WinTitle = IMG_LoadTexture(Engine::Instance().GetRenderer(), "WinTitle.png");
 }
 
 void WinState::Update()
@@ -99,6 +105,7 @@ void WinState::Update()
 void WinState::Render()
 {
 	SDL_RenderCopy(Engine::Instance().GetRenderer(), m_pMainMenuButton, &m_pMainMenuButtonSrc, &m_pMainMenuButtonDst);
+	SDL_RenderCopy(Engine::Instance().GetRenderer(), m_WinTitle, &m_WinTitleSrc, &m_WinTitleDst);
 	State::Render();
 }
 

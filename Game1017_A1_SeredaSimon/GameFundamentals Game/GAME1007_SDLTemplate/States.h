@@ -27,9 +27,14 @@ public:
 class MenuState : public State
 {
 private:
-	SDL_Texture* m_pStartButton;
+	SDL_Texture* m_StartButton;
 	SDL_Rect m_StartButtonSrc = {0, 0, 250, 100},
 		m_StartButtonDst = {400, 600, 250, 100};
+
+	SDL_Texture* m_TitleName;
+	SDL_Rect m_TitleNameSrc = { 0, 0, 1000, 300 },
+		m_TitleNameDst = { 15, 50, 1000, 300 };
+
 
 
 public:
@@ -47,6 +52,10 @@ private:
 	SDL_Texture* m_pMainMenuButton;
 	SDL_Rect m_pMainMenuButtonSrc = { 0, 0, 250, 100 },
 		m_pMainMenuButtonDst = { 400, 400, 250, 100 };
+
+	SDL_Texture* m_LoseTitle;
+	SDL_Rect m_LoseTitleSrc = { 0, 0, 1000, 300 },
+		m_LoseTitleDst = { 0, 50, 1000, 300 };
 public:
 	LoseState();
 	virtual void Enter();
@@ -62,6 +71,10 @@ private:
 	SDL_Texture* m_pMainMenuButton;
 	SDL_Rect m_pMainMenuButtonSrc = { 0, 0, 250, 100 },
 		m_pMainMenuButtonDst = { 400, 400, 250, 100 };
+
+	SDL_Texture* m_WinTitle;
+	SDL_Rect m_WinTitleSrc = { 0, 0, 1000, 300 },
+		m_WinTitleDst = { 0, 50, 1000, 300 };
 public:
 	WinState();
 	virtual void Enter();
