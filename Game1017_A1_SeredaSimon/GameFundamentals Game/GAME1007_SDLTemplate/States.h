@@ -14,6 +14,7 @@ class State
 {
 protected:
 	State() = default;
+	int m_MouseX, m_MouseY;
 public:
 	virtual void Enter() = 0;
 	virtual void Update() = 0;
@@ -26,6 +27,10 @@ public:
 class MenuState : public State
 {
 private:
+	SDL_Texture* m_pStartButton;
+	SDL_Rect m_StartButtonSrc = {0, 0, 250, 100},
+		m_StartButtonDst = {400, 600, 250, 100};
+
 
 public:
 	MenuState();
@@ -35,9 +40,46 @@ public:
 	virtual void Exit();
 };
 
+//LOSE SCENE
+class LoseState : public State
+{
+private:
+	SDL_Texture* m_pMainMenuButton;
+	SDL_Rect m_pMainMenuButtonSrc = { 0, 0, 250, 100 },
+		m_pMainMenuButtonDst = { 400, 600, 250, 100 };
+
+	
+
+public:
+	LoseState();
+	virtual void Enter();
+	virtual void Update();
+	virtual void Render();
+	virtual void Exit();
+};
+
+//WIN SCENE
+class WinState : public State
+{
+private:
+	SDL_Texture* m_pMainMenuButton;
+	SDL_Rect m_pMainMenuButtonSrc = { 0, 0, 250, 100 },
+		m_pMainMenuButtonDst = { 400, 600, 250, 100 };
+public:
+	WinState();
+	virtual void Enter();
+	virtual void Update();
+	virtual void Render();
+	virtual void Exit();
+};
+
 //PAUSE SCENE
 class PauseState : public State
 {
+private:
+	SDL_Texture* m_pResumeButton;
+	SDL_Rect m_pResumeButtonSrc = { 0, 0, 250, 100 },
+		m_pResumeButtonDst = { 400, 600, 250, 100 };
 public:
 	PauseState();
 	virtual void Enter();

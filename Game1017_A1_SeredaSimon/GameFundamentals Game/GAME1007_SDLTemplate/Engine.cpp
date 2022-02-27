@@ -23,7 +23,7 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 	m_fps = (Uint32)round(1.0 / (double)FPS * 1000);
 	m_keystates = SDL_GetKeyboardState(nullptr);
 
-	STMA::ChangeState(new GameState());
+	STMA::ChangeState(new MenuState());
 
 	cout << "Initialization successful!" << endl;
 	m_running = true;

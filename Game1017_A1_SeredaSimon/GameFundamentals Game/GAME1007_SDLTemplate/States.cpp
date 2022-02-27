@@ -9,23 +9,32 @@ void State::Render()
 	SDL_RenderPresent(Engine::Instance().GetRenderer());
 }
 
+//---------------------------------------------------------------
+
 
 //START STATE
 MenuState::MenuState() {}
 
 void MenuState::Enter()
 {
-	std::cout << "entering Menu State..." << std::endl;
+	std::cout << "entering Start State..." << std::endl;
+	m_pStartButton = IMG_LoadTexture(Engine::Instance().GetRenderer(), "StartGameButton.png");
+
 }
 
 void MenuState::Update()
 {
-
+	SDL_GetMouseState(&m_MouseX, &m_MouseY);
+	if (SDL_GetMouseState(NULL, NULL) == 1 && (m_MouseX > m_StartButtonDst.x && m_MouseX < m_StartButtonDst.x + m_StartButtonDst.w && m_MouseY > m_StartButtonDst.y && m_MouseY < m_StartButtonDst.y + m_StartButtonDst.h))
+	{
+		STMA::ChangeState(new GameState());
+	}
 }
 
 void MenuState::Render()
 {
 
+	SDL_RenderCopy(Engine::Instance().GetRenderer(), m_pStartButton, &m_StartButtonSrc, &m_StartButtonDst);
 	State::Render();
 }
 
@@ -34,6 +43,71 @@ void MenuState::Exit()
 	std::cout << "Exiting Start State..." << std::endl;
 }
 
+//---------------------------------------------------------------
+
+//LOSE STATE
+LoseState::LoseState() {}
+
+void LoseState::Enter()
+{
+	std::cout << "entering Lose State..." << std::endl;
+	m_pMainMenuButton = IMG_LoadTexture(Engine::Instance().GetRenderer(), "MainMenuButton.png");
+}
+
+void LoseState::Update()
+{
+	SDL_GetMouseState(&m_MouseX, &m_MouseY);
+	if (SDL_GetMouseState(NULL, NULL) == 1 && (m_MouseX > m_pMainMenuButtonDst.x && m_MouseX < m_pMainMenuButtonDst.x + m_pMainMenuButtonDst.w 
+		&& m_MouseY > m_pMainMenuButtonDst.y && m_MouseY < m_pMainMenuButtonDst.y + m_pMainMenuButtonDst.h))
+	{
+		STMA::ChangeState(new MenuState());
+	}
+}
+
+void LoseState::Render()
+{
+	SDL_RenderCopy(Engine::Instance().GetRenderer(), m_pMainMenuButton, &m_pMainMenuButtonSrc, &m_pMainMenuButtonDst);
+	State::Render();
+}
+
+void LoseState::Exit()
+{
+	std::cout << "Exiting Lose State..." << std::endl;
+}
+
+//---------------------------------------------------------------
+
+//WIN STATE
+WinState::WinState() {}
+
+void WinState::Enter()
+{
+	std::cout << "entering Win State..." << std::endl;
+	m_pMainMenuButton = IMG_LoadTexture(Engine::Instance().GetRenderer(), "MainMenuButton.png");
+}
+
+void WinState::Update()
+{
+	SDL_GetMouseState(&m_MouseX, &m_MouseY);
+	if (SDL_GetMouseState(NULL, NULL) == 1 && (m_MouseX > m_pMainMenuButtonDst.x && m_MouseX < m_pMainMenuButtonDst.x + m_pMainMenuButtonDst.w
+		&& m_MouseY > m_pMainMenuButtonDst.y && m_MouseY < m_pMainMenuButtonDst.y + m_pMainMenuButtonDst.h))
+	{
+		STMA::ChangeState(new MenuState());
+	}
+}
+
+void WinState::Render()
+{
+	SDL_RenderCopy(Engine::Instance().GetRenderer(), m_pMainMenuButton, &m_pMainMenuButtonSrc, &m_pMainMenuButtonDst);
+	State::Render();
+}
+
+void WinState::Exit()
+{
+	std::cout << "Exiting Win State..." << std::endl;
+}
+
+//---------------------------------------------------------------
 
 //PAUSE MENU
 PauseState::PauseState() {}
@@ -41,16 +115,31 @@ PauseState::PauseState() {}
 void PauseState::Enter()
 {
 	std::cout << "entering Pause State..." << std::endl;
+	m_pResumeButton = IMG_LoadTexture(Engine::Instance().GetRenderer(), "ResumeButton.png");
 }
 
 void PauseState::Update()
 {
 
+	SDL_GetMouseState(&m_MouseX, &m_MouseY);
+	if (SDL_GetMouseState(NULL, NULL) == 1 && (m_MouseX > m_pResumeButtonDst.x && m_MouseX < m_pResumeButtonDst.x + m_pResumeButtonDst.w
+		&& m_MouseY > m_pResumeButtonDst.y && m_MouseY < m_pResumeButtonDst.y + m_pResumeButtonDst.h))
+	{
+		STMA::PopState();
+	}
 }
 
 void PauseState::Render()
 {
-	SDL_RenderClear(Engine::Instance().GetRenderer());
+	STMA::GetStates().front()->Render();
+	
+	SDL_SetRenderDrawBlendMode(Engine::Instance().GetRenderer(), SDL_BLENDMODE_BLEND);
+	SDL_SetRenderDrawColor(Engine::Instance().GetRenderer(), 0, 0, 0, 64);
+	SDL_Rect rect = { 0, 0, WIDTH, HEIGHT };
+	SDL_RenderFillRect(Engine::Instance().GetRenderer(), &rect);
+
+	SDL_RenderCopy(Engine::Instance().GetRenderer(), m_pResumeButton, &m_pResumeButtonSrc, &m_pResumeButtonDst);
+
 	State::Render();
 }
 
@@ -59,8 +148,10 @@ void PauseState::Exit()
 	std::cout << "exiting Pause State..." << std::endl;
 }
 
+//---------------------------------------------------------------
 
-//TEST PLAY SCENE
+
+//PLAY SCENE
 GameState::GameState() {}
 
 void GameState::Enter()
@@ -120,6 +211,7 @@ void GameState::Update()
 	{
 		m_witch.m_dst.x += SPEED;
 	}
+
 	if (Engine::Instance().KeyDown(SDL_SCANCODE_SPACE) && m_fireballTimer >= 1)
 	{
 		Mix_PlayChannel(-1, m_pWitchFireSFX, 0);
@@ -127,12 +219,15 @@ void GameState::Update()
 		m_pFireballs.shrink_to_fit();
 		m_fireballTimer = 0.5;
 	}
-
-	std::cout << m_fireballTimer;
-
 	if (m_fireballTimer < 1)
 	{
 		m_fireballTimer += Engine::Instance().GetDeltaTime();
+	}
+
+	if (Engine::Instance().KeyDown(SDL_SCANCODE_P))
+	{
+		Mix_VolumeMusic(1);
+		STMA::PushState(new PauseState());
 	}
 
 	//FIREBALL MOVEMENT
@@ -339,4 +434,5 @@ void GameState::Exit()
 void GameState::Resume()
 {
 	std::cout << "Resuming Test Play State..." << std::endl;
+	Mix_VolumeMusic(16);
 }
