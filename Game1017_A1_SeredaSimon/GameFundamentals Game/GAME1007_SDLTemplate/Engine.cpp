@@ -314,6 +314,12 @@ int Engine::Run()
 	return 0;
 }
 
+Engine& Engine::Instance()
+{
+	static Engine instance;
+	return instance;
+}
+
 void Engine::Clean()
 {
 	cout << "Cleaning engine..." << endl;

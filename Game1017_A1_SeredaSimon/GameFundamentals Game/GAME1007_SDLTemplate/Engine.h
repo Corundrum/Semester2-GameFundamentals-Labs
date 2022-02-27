@@ -52,6 +52,7 @@ private: //properties
 	SDL_Rect m_bg2 = { 1024,0,1024,768 };
 
 private: //method prototypes
+	Engine() { std::cout << "Engine Created..." << std::endl; }
 	int Init(const char* title, int xPos, int yPos, int width, int height, int flags);
 	void Wake();
 	void HandleEvents();
@@ -59,11 +60,14 @@ private: //method prototypes
 	void Render();
 	void Sleep();
 	void Clean();
-	bool KeyDown(SDL_Scancode c);
 
 
 public: // public method prototyples
 	int Run();
+
+	static Engine& Instance();
+	SDL_Renderer* GetRenderer() { return m_pRenderer; }
+	bool KeyDown(SDL_Scancode c);
 
 };
 
