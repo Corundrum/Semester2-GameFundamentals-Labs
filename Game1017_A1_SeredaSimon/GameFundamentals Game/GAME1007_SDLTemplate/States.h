@@ -46,10 +46,7 @@ class LoseState : public State
 private:
 	SDL_Texture* m_pMainMenuButton;
 	SDL_Rect m_pMainMenuButtonSrc = { 0, 0, 250, 100 },
-		m_pMainMenuButtonDst = { 400, 600, 250, 100 };
-
-	
-
+		m_pMainMenuButtonDst = { 400, 400, 250, 100 };
 public:
 	LoseState();
 	virtual void Enter();
@@ -64,7 +61,7 @@ class WinState : public State
 private:
 	SDL_Texture* m_pMainMenuButton;
 	SDL_Rect m_pMainMenuButtonSrc = { 0, 0, 250, 100 },
-		m_pMainMenuButtonDst = { 400, 600, 250, 100 };
+		m_pMainMenuButtonDst = { 400, 400, 250, 100 };
 public:
 	WinState();
 	virtual void Enter();
@@ -88,7 +85,7 @@ public:
 	virtual void Exit();
 };
 
-//TEST PLAY SCENE
+//PLAY SCENE
 class GameState : public State
 {
 private:
@@ -114,6 +111,7 @@ private:
 	int m_shootCtr = 0;
 	int m_shootMax = 120;
 	float m_fireballTimer = 1;
+	int m_enemiesKilled = 0;
 	//Background
 	SDL_Rect m_bg1 = { 0,0,1024,768 };
 	SDL_Rect m_bg2 = { 1024,0,1024,768 };

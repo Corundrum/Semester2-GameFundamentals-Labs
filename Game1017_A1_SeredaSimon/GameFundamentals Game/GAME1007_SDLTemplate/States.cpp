@@ -317,6 +317,7 @@ void GameState::Update()
 				m_pBats.erase(m_pBats.begin() + j);
 				m_pFireballs.shrink_to_fit();
 				m_pBats.shrink_to_fit();
+				m_enemiesKilled += 1;
 				break;
 			}
 		}
@@ -331,8 +332,8 @@ void GameState::Update()
 			m_pBatfire[i] = nullptr;
 			m_pBatfire.erase(m_pBatfire.begin() + i);
 			m_pBatfire.shrink_to_fit();
-			//delete m_pwitch;
-			SDL_DestroyTexture(m_pwitchTexture);
+			//Change Scene to Lose State
+			STMA::ChangeState(new LoseState());
 			break;
 		}
 	}
@@ -346,10 +347,15 @@ void GameState::Update()
 			m_pBats[i] = nullptr;
 			m_pBats.erase(m_pBats.begin() + i);
 			m_pBats.shrink_to_fit();
-			//delete m_pwitch;
-			SDL_DestroyTexture(m_pwitchTexture);
+			//Change Scene to Lose State
+			STMA::ChangeState(new LoseState());
 			break;
 		}
+	}
+
+	if (m_enemiesKilled >= 10)
+	{
+		STMA::ChangeState(new WinState());
 	}
 
 	//SCROLLING BACKGROUND
