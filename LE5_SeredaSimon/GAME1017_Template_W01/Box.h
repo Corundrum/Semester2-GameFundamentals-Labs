@@ -33,7 +33,7 @@ public:
 	void Update();
 	void Render();
 	const SDL_Point GetPos() { return m_pos; }
-	//map stuff later
+
 };
 
 #endif // !_BOX_H_
