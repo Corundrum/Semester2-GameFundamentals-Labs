@@ -92,7 +92,7 @@ void GameState::Enter() // Used for initialization.
 	TEMA::Load("Img/Tiles.png", "tiles");
 	m_objects.push_back(pair<string, GameObject*>("level", new TiledLevel(24, 32, 32, 32, "Dat/Tiledata.txt", "Dat/Level1.txt", "tiles")));
 	//load player image and give it a string key of "player"
-	m_objects.push_back(pair<string, GameObject*>("player", new PlatformPlayer({ 0,0,0,0 }, {288, 480, 64, 64})));
+	m_objects.push_back(pair<string, GameObject*>("player", new PlatformPlayer({ 0,0,128,128 }, {288, 480, 64, 64})));
 }
 
 void GameState::Update()
