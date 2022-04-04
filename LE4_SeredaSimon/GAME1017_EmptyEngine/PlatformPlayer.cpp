@@ -19,7 +19,7 @@ void PlatformPlayer::Update()
 		if (EVMA::KeyPressed(SDL_SCANCODE_A) || EVMA::KeyPressed(SDL_SCANCODE_D))
 		{
 			m_state = STATE_RUNNING;
-			SetAnimation(4, 0, 8);
+			SetAnimation(4, 0, 4);
 		}
 		//Transition to Jump
 		else if (EVMA::KeyPressed(SDL_SCANCODE_SPACE) && m_isGrounded)
@@ -77,7 +77,7 @@ void PlatformPlayer::Update()
 		if (m_isGrounded)
 		{
 			m_state = STATE_RUNNING;
-			SetAnimation(4, 0, 8);
+			SetAnimation(4, 0, 4);
 		}
 		break;
 	}
