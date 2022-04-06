@@ -23,7 +23,7 @@ private: // Private properties.
 	// Example-specific properties.
 	vector<Box*> m_obstacles;
 	map<string, Box*> m_protos;
-	string m_keys[4] = { "dumpster fire", "spike_wall", "spikes_lg", "broken bottles" };
+	string m_keys[4] = { "dumpster fire", "ladders", "road blocks", "broken bottles" };
 	int m_gapCtr, m_gapMax;
 
 	vector<Background*> m_backgrounds;

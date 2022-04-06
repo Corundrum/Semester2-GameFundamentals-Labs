@@ -44,8 +44,8 @@ bool Engine::Init(const char* title, int xpos, int ypos, int width, int height, 
 	}
 
 	m_protos.emplace("dumpster fire", new Box({ 1024, 384 }, true, { 1048, 394, 48, 128 }, { 0, 0, 38, 84 }));
-	m_protos.emplace("spike_wall", new Box({ 1024, 384 }, true, { 1056, 0, 64, 384 }, { 64, 255, 32, 255 }));
-	m_protos.emplace("spikes_lg", new Box({ 1024, 384 }, true, { 1024, 448, 128, 64 }, { 234, 215, 84, 255 }));
+	m_protos.emplace("ladders", new Box({ 1024, 384 }, true, { 1056, 0, 31, 384 }, { 65, 0, 31, 384 }));
+	m_protos.emplace("road blocks", new Box({ 1024, 384 }, true, { 1024, 454, 128, 64 }, { 0, 384, 128, 64 }));
 	m_protos.emplace("broken bottles", new Box({ 1024, 384 }, true, { 1056, 486, 64, 35 }, { 0, 96, 64, 35 }));
 
 	m_gapCtr = 0;
