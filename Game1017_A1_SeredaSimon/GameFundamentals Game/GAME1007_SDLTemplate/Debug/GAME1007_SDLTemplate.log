@@ -1,0 +1,22 @@
+﻿  Bat.cpp
+  Engine.cpp
+E:\Visual Studio Files\Game Fundamentals\Game1017_A1_SeredaSimon\GameFundamentals Game\GAME1007_SDLTemplate\Fireball.h(5,1): warning C4005: 'MOVESPEED': macro redefinition
+E:\Visual Studio Files\Game Fundamentals\Game1017_A1_SeredaSimon\GameFundamentals Game\GAME1007_SDLTemplate\Witch.h(5): message : see previous definition of 'MOVESPEED'
+E:\Visual Studio Files\Game Fundamentals\Game1017_A1_SeredaSimon\GameFundamentals Game\GAME1007_SDLTemplate\Bat.h(5,1): warning C4005: 'MOVESPEED': macro redefinition
+E:\Visual Studio Files\Game Fundamentals\Game1017_A1_SeredaSimon\GameFundamentals Game\GAME1007_SDLTemplate\Fireball.h(5): message : see previous definition of 'MOVESPEED'
+  Fireball.cpp
+  Main.cpp
+  StateManager.cpp
+E:\Visual Studio Files\Game Fundamentals\Game1017_A1_SeredaSimon\GameFundamentals Game\GAME1007_SDLTemplate\Fireball.h(5,1): warning C4005: 'MOVESPEED': macro redefinition
+E:\Visual Studio Files\Game Fundamentals\Game1017_A1_SeredaSimon\GameFundamentals Game\GAME1007_SDLTemplate\Witch.h(5): message : see previous definition of 'MOVESPEED'
+E:\Visual Studio Files\Game Fundamentals\Game1017_A1_SeredaSimon\GameFundamentals Game\GAME1007_SDLTemplate\Bat.h(5,1): warning C4005: 'MOVESPEED': macro redefinition
+E:\Visual Studio Files\Game Fundamentals\Game1017_A1_SeredaSimon\GameFundamentals Game\GAME1007_SDLTemplate\Fireball.h(5): message : see previous definition of 'MOVESPEED'
+  States.cpp
+E:\Visual Studio Files\Game Fundamentals\Game1017_A1_SeredaSimon\GameFundamentals Game\GAME1007_SDLTemplate\Fireball.h(5,1): warning C4005: 'MOVESPEED': macro redefinition
+E:\Visual Studio Files\Game Fundamentals\Game1017_A1_SeredaSimon\GameFundamentals Game\GAME1007_SDLTemplate\Witch.h(5): message : see previous definition of 'MOVESPEED'
+E:\Visual Studio Files\Game Fundamentals\Game1017_A1_SeredaSimon\GameFundamentals Game\GAME1007_SDLTemplate\Bat.h(5,1): warning C4005: 'MOVESPEED': macro redefinition
+E:\Visual Studio Files\Game Fundamentals\Game1017_A1_SeredaSimon\GameFundamentals Game\GAME1007_SDLTemplate\Fireball.h(5): message : see previous definition of 'MOVESPEED'
+E:\Visual Studio Files\Game Fundamentals\Game1017_A1_SeredaSimon\GameFundamentals Game\GAME1007_SDLTemplate\States.cpp(231,53): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+  Witch.cpp
+  Generating Code...
+  GAME1007_SDLTemplate.vcxproj -> E:\Visual Studio Files\Game Fundamentals\Game1017_A1_SeredaSimon\GameFundamentals Game\Debug\GAME1007_SDLTemplate.exe

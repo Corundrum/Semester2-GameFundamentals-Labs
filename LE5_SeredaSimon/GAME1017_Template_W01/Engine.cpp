@@ -24,6 +24,7 @@ bool Engine::Init(const char* title, int xpos, int ypos, int width, int height, 
 			if (m_pRenderer != nullptr) // Renderer init success.
 			{
 				TEMA::Init();
+				TEMA::Load("img/obstacles.png", "obstacles");
 				TEMA::Load("img/BG.png", "bg");
 			}
 			else return false; // Renderer init fail.
@@ -42,10 +43,10 @@ bool Engine::Init(const char* title, int xpos, int ypos, int width, int height, 
 		m_obstacles.push_back(new Box({ 128 * i, 384 }));
 	}
 
-	m_protos.emplace("saw", new Box({ 1024, 384 }, true, { 1024, 384, 128, 128 }, { 255, 64, 128, 255 }));
+	m_protos.emplace("dumpster fire", new Box({ 1024, 384 }, true, { 1048, 394, 48, 128 }, { 0, 0, 38, 84 }));
 	m_protos.emplace("spike_wall", new Box({ 1024, 384 }, true, { 1056, 0, 64, 384 }, { 64, 255, 32, 255 }));
 	m_protos.emplace("spikes_lg", new Box({ 1024, 384 }, true, { 1024, 448, 128, 64 }, { 234, 215, 84, 255 }));
-	m_protos.emplace("spikes_sm", new Box({ 1024, 384 }, true, { 1056, 480, 64, 32 }, { 1, 186, 252, 255 }));
+	m_protos.emplace("broken bottles", new Box({ 1024, 384 }, true, { 1056, 486, 64, 35 }, { 0, 96, 64, 35 }));
 
 	m_gapCtr = 0;
 	m_gapMax = 3;

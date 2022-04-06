@@ -1,19 +1,19 @@
 #include "Box.h"
 #include "Engine.h"
-#define SCROLLSPEED 2
+#include "TextureManager.h"
+#define SCROLLSPEED 4
 
-Obstacle::Obstacle() : m_dst({ 0,0,0,0 }), m_color({ 255,255,255,255 }) {}
-Obstacle::Obstacle(const SDL_Rect r, const SDL_Color c) : m_dst(r), m_color(c) {}
+Obstacle::Obstacle() : m_dst({ 0,0,0,0 }), m_src({ 0,0,0,0 }) {}
+Obstacle::Obstacle(const SDL_Rect r, const SDL_Rect c) : m_dst(r), m_src(c) {}
 //can add default values to parameters and not need a default constructor
 
 void Obstacle::Render()
 {
     // for this initial lab, we are just drawing rectangles.
-    SDL_SetRenderDrawColor(Engine::Instance().GetRenderer(), m_color.r, m_color.g, m_color.b, m_color.a);
-    SDL_RenderFillRect(Engine::Instance().GetRenderer(), &m_dst);
+    SDL_RenderCopy(Engine::Instance().GetRenderer(), TEMA::GetTexture("obstacles"), &m_src, &m_dst);
 }
 
-Box::Box(const SDL_Point p, bool makeSprite, const SDL_Rect r, const SDL_Color c) : m_pos(p), m_pSprite(nullptr) // r and c are for sprite
+Box::Box(const SDL_Point p, bool makeSprite, const SDL_Rect r, const SDL_Rect c) : m_pos(p), m_pSprite(nullptr) // r and c are for sprite
 {
     if (makeSprite)
     {
@@ -33,7 +33,7 @@ Box::~Box()
 Box* Box::Clone()
 {
     Box* clone = new Box(this->m_pos, false); // deep copy of object
-    clone->m_pSprite = new Obstacle(this->m_pSprite->m_dst, this->m_pSprite->m_color);
+    clone->m_pSprite = new Obstacle(this->m_pSprite->m_dst, this->m_pSprite->m_src);
     return clone;
 }
 
@@ -53,8 +53,8 @@ void Box::Render()
         m_pSprite->Render();
     }
     // if we want to render a border around each box...
-    SDL_Rect dst = { m_pos.x, m_pos.y, 128, 128 };
+   /* SDL_Rect dst = { m_pos.x, m_pos.y, 128, 128 };
     SDL_SetRenderDrawColor(Engine::Instance().GetRenderer(), 156, 230, 200, 255);
-    SDL_RenderDrawRect(Engine::Instance().GetRenderer(), &dst);
+    SDL_RenderDrawRect(Engine::Instance().GetRenderer(), &dst);*/
 }
 
